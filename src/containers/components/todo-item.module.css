@@ -1,0 +1,11 @@
+.item{
+    background-color: white;
+    color: rgb(34, 34, 34);
+    border-radius: 4px;
+    padding: 10px;
+    margin: 8px;
+}
+
+.h1{
+    font-size: 50%;
+}
