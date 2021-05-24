@@ -2,6 +2,8 @@ import * as React from "react";
 import style from "./App.module.css";
 import TodoList from "../components/todo-list";
 import TodoInput from "../components/todo-input";
+import { useSelector, useDispatch } from "react-redux";
+import { todosState, showListState, showInputState } from "../../store/index"; 
 
 const App: React.FC = () => {
   const [todos, setTodos] = React.useState<string[]>([]);
@@ -11,10 +13,9 @@ const App: React.FC = () => {
 
   const addNewTodo = (newTodo: string) => {
     console.log(newTodo);
-    const updatedTodos = [...todos];
+    const updatedTodos : string[] = [...todos];
     updatedTodos.unshift(newTodo);
     setTodos(updatedTodos);
-    console.log(todos);
     setShowList(true);
     setShowInput(false);
   };
