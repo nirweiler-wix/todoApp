@@ -6,22 +6,31 @@ const TodoInput: React.FC<{ onSubmit: Function }> = (props) => {
   const [enteredTodo, setEnteredTodo] = React.useState("");
 
   const inputChangedHandler = (event: BaseSyntheticEvent) => {
+    event.preventDefault();
     setEnteredTodo(event.target.value);
   };
 
-  const submitHandler = () => {
-    props.onSubmit(enteredTodo);
+  const submitHandler = (event: BaseSyntheticEvent) => {
+    event.preventDefault();
+    if (enteredTodo.trim().length !== 0) {
+        props.onSubmit(enteredTodo);
+    }
+    else {
+        alert("Cannot add empty todo");
+    }
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <h1>Add To-do</h1>
-      <div>
-        <label>To-do</label>
-        <input type="text" onChange={inputChangedHandler} />
-        <button type="submit">Done</button>
-      </div>
-    </form>
+    <div>
+      <form onSubmit={submitHandler}>
+        <h1>Add To-do</h1>
+        <div>
+          <label>To-do</label>
+          <input type="text" onChange={inputChangedHandler} placeholder="What need to be done?" />
+          <button type="submit" className={Style.doneButton}>Done</button>
+        </div>
+      </form>
+    </div>
   );
 };
 

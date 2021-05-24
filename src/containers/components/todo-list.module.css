@@ -6,3 +6,14 @@
     flex-direction: column;
     align-items: space-between;
 }
+
+img {
+    max-height: 80%;
+    max-width: 60%;
+    align-self: center;
+}
+
+p{
+    align-self: center;
+    
+}

@@ -26,6 +26,9 @@ const config: webpack.Configuration = {
     module: {
         rules: [
             {
+                test: /\.(png|jpg|jpeg|gif)$/i,
+            },
+            {
                 test: /\.tsx?/,
                 exclude: /node_modules/,
                 loader: 'ts-loader',
