@@ -1,12 +1,10 @@
 export interface todosState {
   todos: string[];
-  showList: boolean;
   showInput: boolean;
 }
 
 const initialTodosState = {
   todos: [],
-  showList: true,
   showInput: false,
 };
 
@@ -18,16 +16,15 @@ export const todosReducer = (
 ) => {
   switch (action.type) {
     case "OPEN_INPUT":
-      return { ...state, showList: false, showInput: true };
+      return { ...state, showInput: true };
     case "DONE":
       return {
         ...state,
         todos: [...state.todos, action.payload],
-        showList: true,
         showInput: false,
       };
     case "CLOSE_INPUT":
-      return { ...state, showList: true, showInput: false };
+      return { ...state, showInput: false };
     default:
       return state;
   }

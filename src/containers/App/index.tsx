@@ -7,16 +7,11 @@ import { todosState } from "../../store/todosReducer";
 import { isPropertySignature } from "typescript";
 
 interface Props {
-    showList : boolean,
     showInput : boolean,
     openInput : () => void
 }
 
 const App: React.FC<Props> = (props) => {
-
-//   const onClickAddTodo = () => {
-//     props.openInput();
-//   };
 
   return (
     <div className={style.container}>
@@ -39,7 +34,6 @@ const App: React.FC<Props> = (props) => {
 const mapStateToProps = (state : todosState) => {
     console.log(state);
     return {
-        showList : state.showList,
         showInput : state.showInput
     }
 }
