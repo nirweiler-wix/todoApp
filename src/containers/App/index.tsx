@@ -2,41 +2,50 @@ import * as React from "react";
 import style from "./App.module.css";
 import TodoList from "../components/todo-list";
 import TodoInput from "../components/todo-input";
-import { useSelector, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { todosState } from "../../store/todosReducer";
+import { isPropertySignature } from "typescript";
 
-const App: React.FC = () => {
-  const todos = useSelector<todosState, todosState["todos"]>(
-    (state) => state.todos
-  );
-  const showList = useSelector<todosState, todosState["showList"]>(
-    (state) => state.showList
-  );
-  const showInput = useSelector<todosState, todosState["showInput"]>(
-    (state) => state.showInput
-  );
-  const dispatch = useDispatch();
-  console.log(todos);
+interface Props {
+    showList : boolean,
+    showInput : boolean,
+    openInput : () => void
+}
 
-  const onClickAddTodo = () => {
-    dispatch({ type: "OPEN_INPUT"});
-  };
+const App: React.FC<Props> = (props) => {
+
+//   const onClickAddTodo = () => {
+//     props.openInput();
+//   };
 
   return (
     <div className={style.container}>
-      {showList && (
+      {!props.showInput && (
         <div>
-          <TodoList/>
-          <button className={style.addButton} onClick={onClickAddTodo}>
+          <TodoList />
+          <button className={style.addButton} onClick={props.openInput}>
             +
           </button>
         </div>
       )}
-      {showInput && (
+      {props.showInput && (
         <TodoInput/>
       )}
     </div>
   );
 };
 
-export default App;
+
+const mapStateToProps = (state : todosState) => {
+    console.log(state);
+    return {
+        showList : state.showList,
+        showInput : state.showInput
+    }
+}
+
+const mapDispatchToProps = (dispatch : any) => {
+    return {openInput : () => {dispatch({type : "OPEN_INPUT"})}}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

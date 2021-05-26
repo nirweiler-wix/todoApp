@@ -10,7 +10,7 @@ const initialTodosState = {
   showInput: false,
 };
 
-type Action = { type: string; payload: string };
+export type Action = { type: string; payload: string };
 
 export const todosReducer = (
   state: todosState = initialTodosState,
