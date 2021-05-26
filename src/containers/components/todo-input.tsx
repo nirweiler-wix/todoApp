@@ -1,7 +1,11 @@
 import React, { BaseSyntheticEvent, FC } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { todosState } from "../../store/todosReducer";
+
 import Style from "./todo-input.module.css";
 
-const TodoInput: React.FC<{ onSubmit: Function, onClose: Function }> = (props) => {
+const TodoInput: React.FC = () => {
+  const dispatch = useDispatch();
   console.log("nir: todo-input");
   const [enteredTodo, setEnteredTodo] = React.useState("");
 
@@ -13,21 +17,23 @@ const TodoInput: React.FC<{ onSubmit: Function, onClose: Function }> = (props) =
   const submitHandler = (event: BaseSyntheticEvent) => {
     event.preventDefault();
     if (enteredTodo.trim().length !== 0) {
-      props.onSubmit(enteredTodo.trim());
+      dispatch({ type: "DONE", payload: enteredTodo.trim() });
     } else {
       alert("Cannot add empty todo. Please try again");
     }
   };
 
   const closeInputFormHandler = () => {
-    props.onClose();
-  }
+    dispatch({ type: "CLOSE_INPUT" });
+  };
 
   return (
     <div>
       <div className={Style.header}>
         <h1>Add To-do</h1>
-        <button className={Style.closeButton} onClick={closeInputFormHandler}>X</button>
+        <button className={Style.closeButton} onClick={closeInputFormHandler}>
+          X
+        </button>
       </div>
       <form onSubmit={submitHandler}>
         <div>

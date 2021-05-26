@@ -16,41 +16,24 @@ const App: React.FC = () => {
     (state) => state.showInput
   );
   const dispatch = useDispatch();
-  //const [todos, setTodos] = React.useState<string[]>([]);
-  //   const [showList, setShowList] = React.useState(true);
-  //   const [showInput, setShowInput] = React.useState(false);
   console.log(todos);
 
-  const addNewTodo = (newTodo: string) => {
-    // console.log(newTodo);
-    // const updatedTodos : string[] = [...todos];
-    // updatedTodos.unshift(newTodo);
-    // setTodos(updatedTodos);
-    dispatch({ type: "DONE", payload: newTodo });
-    // setShowList(true);
-    // setShowInput(false);
-  };
-
   const onClickAddTodo = () => {
-    dispatch({ type: "OPEN_INPUT", payload: "" });
-  };
-
-  const onClickCloseInput = () => {
-    dispatch({ type: "CLOSE_INPUT", payload: "" });
+    dispatch({ type: "OPEN_INPUT"});
   };
 
   return (
     <div className={style.container}>
       {showList && (
         <div>
-          <TodoList todos={todos} />
+          <TodoList/>
           <button className={style.addButton} onClick={onClickAddTodo}>
             +
           </button>
         </div>
       )}
       {showInput && (
-        <TodoInput onSubmit={addNewTodo} onClose={onClickCloseInput} />
+        <TodoInput/>
       )}
     </div>
   );

@@ -6,8 +6,8 @@ export interface todosState {
 
 const initialTodosState = {
   todos: [],
-  showList: false,
-  showInput: true,
+  showList: true,
+  showInput: false,
 };
 
 type Action = { type: string; payload: string };
