@@ -1,5 +1,8 @@
+import Todo from '../containers/App/types'
+
 export interface todosState {
-  todos: string[];
+  //todos: string[];
+  todos : Todo[];
   showInput: boolean;
 }
 
@@ -8,7 +11,7 @@ const initialTodosState = {
   showInput: false,
 };
 
-export type Action = { type: string; payload: string };
+export type Action = { type: string; payload: Todo };
 
 export const todosReducer = (
   state: todosState = initialTodosState,

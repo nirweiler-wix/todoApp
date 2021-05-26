@@ -3,10 +3,12 @@ import { todosReducer } from "../../store/todosReducer";
 import { connect } from "react-redux";
 import { todosState } from "../../store/todosReducer";
 import TodoItem from "./todo-item";
+import Todo from '../App/types'
 import Style from "./todo-list.module.css";
 
-const TodoList: React.FC<{todos : string[]}> = (props) => {
+const TodoList: React.FC<{todos : Todo[]}> = (props) => {
   console.log("nir: todo-List");
+  console.log(props.todos);
   const isEmptyTodoList: boolean = props.todos.length === 0;
 
   return (
@@ -14,7 +16,7 @@ const TodoList: React.FC<{todos : string[]}> = (props) => {
       <h1>Todos</h1>
       <ul className={Style.list}>
         {!isEmptyTodoList &&
-          props.todos.map((todo) => <TodoItem text={todo} />)}
+          props.todos.map((todo) => <TodoItem text={todo.text} />)}
         {isEmptyTodoList && (
           <div className={Style.containerCenter}>
             <img src="../../../public/no-list.png" />
