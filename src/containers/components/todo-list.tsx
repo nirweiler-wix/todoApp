@@ -16,7 +16,7 @@ const TodoList: React.FC<{todos : Todo[]}> = (props) => {
       <h1>Todos</h1>
       <ul className={Style.list}>
         {!isEmptyTodoList &&
-          props.todos.map((todo) => <TodoItem text={todo.text} />)}
+          props.todos.map((todo) => <TodoItem id={todo.id} />)}
         {isEmptyTodoList && (
           <div className={Style.containerCenter}>
             <img src="../../../public/no-list.png" />
