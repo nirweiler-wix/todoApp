@@ -2,58 +2,44 @@ import * as React from "react";
 import style from "./App.module.css";
 import TodoList from "../components/todo-list";
 import TodoInput from "../components/todo-input";
-import { useSelector, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { todosState } from "../../store/todosReducer";
+import { isPropertySignature } from "typescript";
 
-const App: React.FC = () => {
-  const todos = useSelector<todosState, todosState["todos"]>(
-    (state) => state.todos
-  );
-  const showList = useSelector<todosState, todosState["showList"]>(
-    (state) => state.showList
-  );
-  const showInput = useSelector<todosState, todosState["showInput"]>(
-    (state) => state.showInput
-  );
-  const dispatch = useDispatch();
-  //const [todos, setTodos] = React.useState<string[]>([]);
-  //   const [showList, setShowList] = React.useState(true);
-  //   const [showInput, setShowInput] = React.useState(false);
-  console.log(todos);
+interface Props {
+    showInput : boolean,
+    openInput : () => void
+}
 
-  const addNewTodo = (newTodo: string) => {
-    // console.log(newTodo);
-    // const updatedTodos : string[] = [...todos];
-    // updatedTodos.unshift(newTodo);
-    // setTodos(updatedTodos);
-    dispatch({ type: "DONE", payload: newTodo });
-    // setShowList(true);
-    // setShowInput(false);
-  };
-
-  const onClickAddTodo = () => {
-    dispatch({ type: "OPEN_INPUT", payload: "" });
-  };
-
-  const onClickCloseInput = () => {
-    dispatch({ type: "CLOSE_INPUT", payload: "" });
-  };
+const App: React.FC<Props> = (props) => {
 
   return (
     <div className={style.container}>
-      {showList && (
+      {!props.showInput && (
         <div>
-          <TodoList todos={todos} />
-          <button className={style.addButton} onClick={onClickAddTodo}>
+          <TodoList />
+          <button className={style.addButton} onClick={props.openInput}>
             +
           </button>
         </div>
       )}
-      {showInput && (
-        <TodoInput onSubmit={addNewTodo} onClose={onClickCloseInput} />
+      {props.showInput && (
+        <TodoInput/>
       )}
     </div>
   );
 };
 
-export default App;
+
+const mapStateToProps = (state : todosState) => {
+    console.log(state);
+    return {
+        showInput : state.showInput
+    }
+}
+
+const mapDispatchToProps = (dispatch : any) => {
+    return {openInput : () => {dispatch({type : "OPEN_INPUT"})}}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

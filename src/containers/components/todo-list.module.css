@@ -17,3 +17,7 @@ p{
     align-self: center;
     
 }
+
+.containerCenter{
+    align-content: center;
+}

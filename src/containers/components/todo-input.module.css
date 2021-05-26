@@ -26,6 +26,8 @@ label{
 input::placeholder{
     color:rgb(157, 157, 157);
     font-size: 18px;
+    margin: 20px;
+    padding-left: 10px;
 }
 
 .doneButton{
@@ -38,6 +40,7 @@ input::placeholder{
     box-shadow: 0 0 12px 0 #008CBA;
     margin-top: 25px;
     transition: 0.2s;
+    margin-top: auto;
 }
 
 .doneButton:hover{
@@ -57,11 +60,16 @@ input::placeholder{
 .closeButton{
     align-self: flex-end ;
     justify-self: right;
+    margin-right: 10%;
     font-size: 30px;
     background-color: transparent;
     border-color: transparent;
     transition: 0.1s;
     cursor: pointer;
+}
+
+.closeButton:hover{
+    font-size: 34px;
 }
 
 .closeButton:active{
