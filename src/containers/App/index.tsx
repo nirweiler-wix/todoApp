@@ -1,6 +1,7 @@
 import * as React from "react";
 import style from "./App.module.css";
-import TodoList from "../components/todo-list";
+//import TodoList from "../components/todo-list";
+import TodoList from "../components/Connected/connected-todo-list";
 //import TodoInput from "../components/todo-input";
 import TodoInput from '../components/Connected/connected-todo-input';
 import { connect } from "react-redux";
