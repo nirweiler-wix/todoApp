@@ -3,7 +3,6 @@ import React, { BaseSyntheticEvent, FC } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
 import { todosState } from "../../store/todosReducer";
 import Todo from '../App/types'
-
 import Style from "./todo-input.module.css";
 
 interface Props {
@@ -15,7 +14,7 @@ const TodoInput: React.FC<Props> = (props) => {
     const todos = useSelector<todosState, todosState["todos"]>(
         (state) => state.todos
       );
-
+  
   const [enteredTodo, setEnteredTodo] = React.useState("");
 
   const inputChangedHandler = (event: BaseSyntheticEvent) => {
@@ -63,6 +62,7 @@ const TodoInput: React.FC<Props> = (props) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
       submit: (newTodo: Todo) => dispatch({ type: "DONE", payload: newTodo }),
+
       close: () => dispatch({ type: "CLOSE_INPUT" }),
       dispatch
     };

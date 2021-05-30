@@ -1,7 +1,6 @@
 import Todo from '../containers/App/types'
 
 export interface todosState {
-  //todos: string[];
   todos : Todo[];
   showInput: boolean;
 }

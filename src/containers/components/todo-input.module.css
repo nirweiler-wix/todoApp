@@ -29,6 +29,7 @@ input::placeholder{
     color:rgb(157, 157, 157);
     font-size: 18px;
     margin: 20px;
+    padding-left: 10px;
 }
 
 .doneButton{

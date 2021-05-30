@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { todosReducer } from "../../store/todosReducer";
 import { connect } from "react-redux";
 import { todosState } from "../../store/todosReducer";
 import TodoItem from "./todo-item";
