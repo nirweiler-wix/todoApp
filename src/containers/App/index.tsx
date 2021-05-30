@@ -4,7 +4,6 @@ import TodoList from "../components/todo-list";
 import TodoInput from "../components/todo-input";
 import { connect } from "react-redux";
 import { todosState } from "../../store/todosReducer";
-import { isPropertySignature } from "typescript";
 
 interface Props {
     showInput : boolean,

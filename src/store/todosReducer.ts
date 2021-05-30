@@ -7,7 +7,7 @@ export interface todosState {
 }
 
 const initialTodosState = {
-  todos: [{id : 1, text : "hello"}],
+  todos: [],
   showInput: false,
 };
 
