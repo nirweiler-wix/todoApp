@@ -1,4 +1,3 @@
-import { random } from "lodash";
 import React, { BaseSyntheticEvent, FC } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
 import { todosState } from "../../store/todosReducer";
@@ -59,13 +58,4 @@ const TodoInput: React.FC<Props> = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-      submit: (newTodo: Todo) => dispatch({ type: "DONE", payload: newTodo }),
-
-      close: () => dispatch({ type: "CLOSE_INPUT" }),
-      dispatch
-    };
-  };
-  
-export default connect(null,mapDispatchToProps)(TodoInput);
+export default TodoInput;
