@@ -16,11 +16,13 @@ input{
     line-height: 35px;
     font-size: 18px;
     margin-top: 5px;
+    padding-left: 10px;
 }
 
 label{
     font-size:22px;
     color: rgb(38, 38, 38);
+    padding-left: 10px;
 }
 
 input::placeholder{

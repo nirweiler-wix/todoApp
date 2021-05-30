@@ -1,11 +1,28 @@
 .item{
     background-color: white;
     color: rgb(34, 34, 34);
-    border-radius: 4px;
-    padding: 10px;
-    margin: 8px;
+    width: 100%;
 }
 
 .h1{
     font-size: 50%;
+}
+
+.closeButton{
+    margin-right: 1%;
+    font-size: 18px;
+    background-color: transparent;
+    border-color: transparent;
+    transition: 0.1s;
+    cursor: pointer;
+    justify-self: flex-end;
+}
+
+.itemContainer{
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin: 8px;
 }

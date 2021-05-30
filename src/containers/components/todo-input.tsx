@@ -1,11 +1,12 @@
+import { random } from "lodash";
 import React, { BaseSyntheticEvent, FC } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
 import { todosState } from "../../store/todosReducer";
-
+import Todo from '../App/types'
 import Style from "./todo-input.module.css";
 
 interface Props {
-    submit : (newTodo : string) => void,
+    submit : (newTodo : Todo) => void,
     close : () => void
 }
 
@@ -13,8 +14,7 @@ const TodoInput: React.FC<Props> = (props) => {
     const todos = useSelector<todosState, todosState["todos"]>(
         (state) => state.todos
       );
-
-  console.log("nir: todo-input");
+  
   const [enteredTodo, setEnteredTodo] = React.useState("");
 
   const inputChangedHandler = (event: BaseSyntheticEvent) => {
@@ -25,7 +25,8 @@ const TodoInput: React.FC<Props> = (props) => {
   const submitHandler = (event: BaseSyntheticEvent) => {
     event.preventDefault();
     if (enteredTodo.trim().length !== 0) {
-      props.submit(enteredTodo.trim());
+        let newTodo : Todo = {text : enteredTodo.trim(), id : Math.random()}
+      props.submit(newTodo);
     } else {
       alert("Cannot add empty todo. Please try again");
     }
@@ -60,7 +61,8 @@ const TodoInput: React.FC<Props> = (props) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-      submit: (text: string) => dispatch({ type: "DONE", payload: text }),
+      submit: (newTodo: Todo) => dispatch({ type: "DONE", payload: newTodo }),
+
       close: () => dispatch({ type: "CLOSE_INPUT" }),
       dispatch
     };

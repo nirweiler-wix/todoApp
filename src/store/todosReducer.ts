@@ -1,5 +1,7 @@
+import Todo from '../containers/App/types'
+
 export interface todosState {
-  todos: string[];
+  todos : Todo[];
   showInput: boolean;
 }
 
@@ -8,7 +10,7 @@ const initialTodosState = {
   showInput: false,
 };
 
-export type Action = { type: string; payload: string };
+export type Action = { type: string; payload: Todo };
 
 export const todosReducer = (
   state: todosState = initialTodosState,
@@ -25,6 +27,9 @@ export const todosReducer = (
       };
     case "CLOSE_INPUT":
       return { ...state, showInput: false };
+    case "DELETE":
+        const updatedTodos : Todo[] = state.todos.filter(todo => todo.id !== action.payload.id)
+        return {...state, todos: updatedTodos}
     default:
       return state;
   }
