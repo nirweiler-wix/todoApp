@@ -4,8 +4,19 @@
     border-radius: 4px;
     padding: 10px;
     margin: 8px;
+    display: flex;
 }
 
 .h1{
     font-size: 50%;
+}
+
+.closeButton{
+    justify-self: flex-end;
+    margin-right: 10%;
+    font-size: 18px;
+    background-color: transparent;
+    border-color: transparent;
+    transition: 0.1s;
+    cursor: pointer;
 }

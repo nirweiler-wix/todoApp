@@ -28,6 +28,9 @@ export const todosReducer = (
       };
     case "CLOSE_INPUT":
       return { ...state, showInput: false };
+    case "DELETE":
+        const updatedTodos : Todo[] = state.todos.filter(todo => todo.id !== action.payload.id)
+        return {...state, todos: updatedTodos}
     default:
       return state;
   }

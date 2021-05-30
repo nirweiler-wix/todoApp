@@ -10,14 +10,18 @@ interface OwnProps {
 
 interface ItemProps {
     todoItem : Todo
+    delete : (newTodo : Todo) => void
 }
 
 const TodoItem: React.FC<ItemProps> = (props) => {
-  console.log("nir: todo-item");
-  //let currentTodo: Todo = props.todos.find((todo) => todo.id === props.id)!;
+    const onDeleteHandler = () => {
+        props.delete(props.todoItem);
+    }
+
   return (
     <li key={props.todoItem.id} className={Style.item}>
       {props.todoItem.text}
+    <button className={Style.closeButton} onClick={onDeleteHandler}>X</button>
     </li>
   );
 };
@@ -28,5 +32,11 @@ const mapStateToProps = (state : todosState ,ownProps: OwnProps) => {
   return { todoItem : currentTodo };
 };
 
-export default connect(mapStateToProps)(TodoItem);
-//export TodoItem;
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+      delete: (todoDelete: Todo) => dispatch({ type: "DELETE", payload: todoDelete }),
+      dispatch
+    };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(TodoItem);

@@ -6,8 +6,6 @@ import Todo from '../App/types'
 import Style from "./todo-list.module.css";
 
 const TodoList: React.FC<{todos : Todo[]}> = (props) => {
-  console.log("nir: todo-List");
-  console.log(props.todos);
   const isEmptyTodoList: boolean = props.todos.length === 0;
 
   return (
@@ -34,4 +32,3 @@ const mapStateToProps = (state : todosState) =>
 }
 
 export default connect(mapStateToProps)(TodoList)
-//export default TodoList;

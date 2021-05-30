@@ -16,7 +16,6 @@ const TodoInput: React.FC<Props> = (props) => {
         (state) => state.todos
       );
 
-  console.log("nir: todo-input");
   const [enteredTodo, setEnteredTodo] = React.useState("");
 
   const inputChangedHandler = (event: BaseSyntheticEvent) => {
@@ -28,7 +27,6 @@ const TodoInput: React.FC<Props> = (props) => {
     event.preventDefault();
     if (enteredTodo.trim().length !== 0) {
         let newTodo : Todo = {text : enteredTodo.trim(), id : Math.random()}
-      //props.submit(enteredTodo.trim());
       props.submit(newTodo);
     } else {
       alert("Cannot add empty todo. Please try again");
