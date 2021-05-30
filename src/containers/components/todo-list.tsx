@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import TodoItem from "./todo-item";
+//import TodoItem from "./todo-item";
+import TodoItem from "./Connected/connected-todo-item";
 import Todo from '../App/types'
 import Style from "./todo-list.module.css";
 
