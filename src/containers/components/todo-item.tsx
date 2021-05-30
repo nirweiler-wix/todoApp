@@ -4,22 +4,28 @@ import Style from "./todo-item.module.css";
 import { todosState } from "../../store/todosReducer";
 import Todo from "../App/types";
 
-const TodoItem: React.FC<{ id: number; todos: Todo[] }> = (props) => {
+interface OwnProps {
+    id : number
+}
+
+interface ItemProps {
+    todoItem : Todo
+}
+
+const TodoItem: React.FC<ItemProps> = (props) => {
   console.log("nir: todo-item");
-  let currentTodo: Todo = props.todos.find((todo) => todo.id === props.id)!;
+  //let currentTodo: Todo = props.todos.find((todo) => todo.id === props.id)!;
   return (
-    <li key={props.id} className={Style.item}>
-      {currentTodo.text}
+    <li key={props.todoItem.id} className={Style.item}>
+      {props.todoItem.text}
     </li>
   );
 };
 
-// here I need to declare on the index from todoList on OwnProps interface, and than pass it to the item component in Props
-// TODO:
-// 1. change the props of the todoItem, remove from there the id to here
-// 2. create interface for the props and ownprops
-const mapStateToProps = (state: todosState) => {
-  return { todos: state.todos };
+const mapStateToProps = (state : todosState ,ownProps: OwnProps) => {
+    let currentTodo: Todo = state.todos.find((todo) => todo.id === ownProps.id)!;
+
+  return { todoItem : currentTodo };
 };
 
 export default connect(mapStateToProps)(TodoItem);
