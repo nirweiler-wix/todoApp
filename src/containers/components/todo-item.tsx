@@ -13,16 +13,23 @@ interface ItemProps {
     delete : (newTodo : Todo) => void
 }
 
+interface DispatchProps {
+    type : string
+    payload : Todo
+}
+
 const TodoItem: React.FC<ItemProps> = (props) => {
     const onDeleteHandler = () => {
         props.delete(props.todoItem);
     }
 
   return (
+    <div className={Style.itemContainer}>
     <li key={props.todoItem.id} className={Style.item}>
       {props.todoItem.text}
-    <button className={Style.closeButton} onClick={onDeleteHandler}>X</button>
     </li>
+    <button className={Style.closeButton} onClick={onDeleteHandler}>X</button>
+    </div>
   );
 };
 
