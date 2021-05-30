@@ -24,7 +24,7 @@ const TodoInput: React.FC<Props> = (props) => {
   const submitHandler = (event: BaseSyntheticEvent) => {
     event.preventDefault();
     if (enteredTodo.trim().length !== 0) {
-        let newTodo : Todo = {text : enteredTodo.trim(), id : Math.random()}
+        let newTodo : Todo = {text : enteredTodo.trim(), id : Math.random(), isDone : false}
       props.submit(newTodo);
     } else {
       alert("Cannot add empty todo. Please try again");

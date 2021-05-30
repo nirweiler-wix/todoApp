@@ -7,7 +7,7 @@ export interface todosState {
 
 const initialTodosState = {
   todos: [],
-  showInput: false,
+  showInput: false
 };
 
 export type Action = { type: string; payload: Todo };
@@ -30,6 +30,12 @@ export const todosReducer = (
     case "DELETE":
         const updatedTodos : Todo[] = state.todos.filter(todo => todo.id !== action.payload.id)
         return {...state, todos: updatedTodos}
+    case "COMPLETED":
+        const updatedTodoList : Todo[] = state.todos.filter(todo => todo.id !== action.payload.id)
+        let completedTodo = {...action.payload}
+        completedTodo.isDone = !completedTodo.isDone;
+        updatedTodoList.unshift(completedTodo)
+        return {...state, todos : updatedTodoList}
     default:
       return state;
   }
