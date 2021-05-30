@@ -16,6 +16,7 @@ const mapStateToProps = (state : todosState ,ownProps: OwnProps) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
       delete: (todoDelete: Todo) => dispatch({ type: "DELETE", payload: todoDelete }),
+      completed : (completedTodo : Todo) => dispatch({type: "COMPLETED", payload: completedTodo}),
       dispatch
     };
 }
