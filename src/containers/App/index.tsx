@@ -3,7 +3,7 @@ import style from "./App.module.css";
 import TodoList from "../components/Connected/connected-todo-list";
 import TodoInput from '../components/Connected/connected-todo-input';
 import { connect } from "react-redux";
-import { todosState } from "../../store/todosReducer";
+import { todosState } from "../../store/todosInitialState";
 import { TodosActions } from '../../store/todosActions';
 
 interface Props {

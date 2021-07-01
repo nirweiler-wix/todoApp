@@ -1,7 +1,7 @@
 import React, { BaseSyntheticEvent, FC } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
-import { todosState } from "../../store/todosReducer";
-import Todo from '../App/types'
+import { todosState } from "../../../store/todosInitialState";
+import Todo from '../../App/types'
 import Style from "./todo-input.module.css";
 
 interface Props {

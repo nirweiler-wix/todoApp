@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
-import { todosState } from "../../../store/todosReducer";
+import { todosState } from "../../../store/todosInitialState";
 import Todo from "../../App/types";
-import TodoItem from '../todo-item';
+import TodoItem from '../pure/todo-item';
 import { TodosActions } from '../../../store/todosActions';
 
 interface OwnProps {

@@ -1,18 +1,8 @@
 import { AnyAction } from 'redux';
 import Todo from '../containers/App/types'
 import { OPEN_INPUT, SUBMIT, CLOSE_INPUT, DELETE, COMPLETED } from './todosActions';
+import { todosState, initialTodosState } from './todosInitialState';
 
-export interface todosState {
-  todos : Todo[];
-  showInput: boolean;
-}
-
-const initialTodosState = {
-  todos: [],
-  showInput: false
-};
-
-//export type Action = { type: string; payload: Todo };
 
 export const todosReducer = (
   state: todosState = initialTodosState,

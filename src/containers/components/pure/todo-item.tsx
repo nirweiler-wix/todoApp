@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { connect } from "react-redux";
 import Style from "./todo-item.module.css";
-import { todosState } from "../../store/todosReducer";
-import Todo from "../App/types";
+import { todosState } from "../../../store/todosInitialState";
+import Todo from "../../App/types";
 
 interface ItemProps {
     todoItem : Todo
