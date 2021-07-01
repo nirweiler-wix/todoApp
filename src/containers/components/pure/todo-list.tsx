@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import TodoItem from "../Connected/connected-todo-item";
-import Todo from "../../App/types";
+import { Todo } from "../../App/types";
 import Style from "./todo-list.module.css";
-import { TodoListProps } from './types';
+import { TodoListProps } from "./types";
 
 const TodoList: React.FC<TodoListProps> = (props) => {
   const completedTodos: Todo[] = props.todos.filter(
@@ -19,11 +19,11 @@ const TodoList: React.FC<TodoListProps> = (props) => {
     <div>
       <h1>Todos</h1>
       <ul className={Style.list}>
-        { !isEmptyTodoList &&
+        {!isEmptyTodoList &&
           uncompletedTodos.map((todo) => <TodoItem id={todo.id} />)}
-        { !isEmptyCompletedTodos &&
+        {!isEmptyCompletedTodos &&
           completedTodos.map((todo) => <TodoItem id={todo.id} />)}
-        { isEmptyTodoList && isEmptyCompletedTodos && (
+        {isEmptyTodoList && isEmptyCompletedTodos && (
           <div className={Style.containerCenter}>
             <img src="../../../public/no-list.png" />
             <p>New todos will apear here</p>

@@ -1,5 +1,4 @@
-import Todo from "../containers/App/types";
-
+import { Todo } from "../containers/App/types";
 
 export interface todosState {
     todos : Todo[];

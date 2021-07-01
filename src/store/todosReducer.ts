@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import Todo from '../containers/App/types'
+import { Todo } from '../containers/App/types'
 import { OPEN_INPUT, SUBMIT, CLOSE_INPUT, DELETE, COMPLETED } from './todosActions';
 import { todosState, initialTodosState } from './todosInitialState';
 

@@ -1,5 +1,5 @@
 import { connect} from "react-redux";
-import Todo from '../../App/types';
+import { Todo } from '../../App/types';
 import TodoInput from '../pure/todo-input';
 import { TodosActions } from '../../../store/todosActions';
 
