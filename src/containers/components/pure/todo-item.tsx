@@ -1,15 +1,6 @@
 import React, { FC } from "react";
-import { connect } from "react-redux";
 import Style from "./todo-item.module.css";
-import { todosState } from "../../../store/todosInitialState";
-import Todo from "../../App/types";
-
-interface ItemProps {
-    todoItem : Todo
-    delete : (newTodo : Todo) => void
-    completed : (completedTodo : Todo) => void
-}
-
+import { ItemProps } from './types';
 
 const TodoItem: React.FC<ItemProps> = (props) => {
     const onDeleteHandler = () => {

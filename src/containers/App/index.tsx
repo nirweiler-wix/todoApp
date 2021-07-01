@@ -5,13 +5,9 @@ import TodoInput from '../components/Connected/connected-todo-input';
 import { connect } from "react-redux";
 import { todosState } from "../../store/todosInitialState";
 import { TodosActions } from '../../store/todosActions';
+import { AppProps } from './types';
 
-interface Props {
-    showInput : boolean,
-    openInput : () => void
-}
-
-const App: React.FC<Props> = (props) => {
+const App: React.FC<AppProps> = (props) => {
 
   return (
     <div className={style.container}>

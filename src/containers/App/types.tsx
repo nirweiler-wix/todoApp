@@ -3,3 +3,8 @@ export default interface Todo {
     id : number;
     isDone : boolean;
 }
+
+export interface AppProps {
+    showInput : boolean,
+    openInput : () => void
+}

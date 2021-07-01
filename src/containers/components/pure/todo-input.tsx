@@ -1,18 +1,10 @@
-import React, { BaseSyntheticEvent, FC } from "react";
-import { connect, useSelector, useDispatch } from "react-redux";
-import { todosState } from "../../../store/todosInitialState";
+import React, { BaseSyntheticEvent } from "react";
 import Todo from '../../App/types'
 import Style from "./todo-input.module.css";
+import { InputProps } from './types';
 
-interface Props {
-    submit : (newTodo : Todo) => void,
-    close : () => void
-}
 
-const TodoInput: React.FC<Props> = (props) => {
-    const todos = useSelector<todosState, todosState["todos"]>(
-        (state) => state.todos
-      );
+const TodoInput: React.FC<InputProps> = (props) => {
   
   const [enteredTodo, setEnteredTodo] = React.useState("");
 
@@ -24,7 +16,7 @@ const TodoInput: React.FC<Props> = (props) => {
   const submitHandler = (event: BaseSyntheticEvent) => {
     event.preventDefault();
     if (enteredTodo.trim().length !== 0) {
-        let newTodo : Todo = {text : enteredTodo.trim(), id : Math.random(), isDone : false}
+        const newTodo : Todo = {text : enteredTodo.trim(), id : Math.random(), isDone : false}
       props.submit(newTodo);
     } else {
       alert("Cannot add empty todo. Please try again");
