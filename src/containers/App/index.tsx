@@ -3,14 +3,11 @@ import style from "./App.module.css";
 import TodoList from "../components/Connected/connected-todo-list";
 import TodoInput from '../components/Connected/connected-todo-input';
 import { connect } from "react-redux";
-import { todosState } from "../../store/todosReducer";
+import { todosState } from "../../store/todosInitialState";
+import { TodosActions } from '../../store/todosActions';
+import { AppProps } from './types';
 
-interface Props {
-    showInput : boolean,
-    openInput : () => void
-}
-
-const App: React.FC<Props> = (props) => {
+const App: React.FC<AppProps> = (props) => {
 
   return (
     <div className={style.container}>
@@ -38,7 +35,7 @@ const mapStateToProps = (state : todosState) => {
 }
 
 const mapDispatchToProps = (dispatch : any) => {
-    return {openInput : () => {dispatch({type : "OPEN_INPUT"})}}
+    return {openInput : () => {dispatch(TodosActions.openInput())}}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

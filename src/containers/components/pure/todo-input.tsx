@@ -1,19 +1,9 @@
-import React, { BaseSyntheticEvent, FC } from "react";
-import { connect, useSelector, useDispatch } from "react-redux";
-import { todosState } from "../../store/todosReducer";
-import Todo from '../App/types'
+import React, { BaseSyntheticEvent } from "react";
+import { Todo } from "../../App/types";
 import Style from "./todo-input.module.css";
+import { InputProps } from "./types";
 
-interface Props {
-    submit : (newTodo : Todo) => void,
-    close : () => void
-}
-
-const TodoInput: React.FC<Props> = (props) => {
-    const todos = useSelector<todosState, todosState["todos"]>(
-        (state) => state.todos
-      );
-  
+const TodoInput: React.FC<InputProps> = (props) => {
   const [enteredTodo, setEnteredTodo] = React.useState("");
 
   const inputChangedHandler = (event: BaseSyntheticEvent) => {
@@ -24,22 +14,24 @@ const TodoInput: React.FC<Props> = (props) => {
   const submitHandler = (event: BaseSyntheticEvent) => {
     event.preventDefault();
     if (enteredTodo.trim().length !== 0) {
-        let newTodo : Todo = {text : enteredTodo.trim(), id : Math.random(), isDone : false}
+      const newTodo: Todo = {
+        text: enteredTodo.trim(),
+        id: Math.random(),
+        isDone: false,
+      };
       props.submit(newTodo);
     } else {
       alert("Cannot add empty todo. Please try again");
     }
   };
 
-  const closeInputFormHandler = () => {
-    props.close();
-  }
-
   return (
     <div>
       <div className={Style.header}>
         <h1>Add To-do</h1>
-        <button className={Style.closeButton} onClick={closeInputFormHandler}>X</button>
+        <button className={Style.closeButton} onClick={props.close}>
+          X
+        </button>
       </div>
       <form onSubmit={submitHandler}>
         <div>
