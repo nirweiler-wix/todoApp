@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import { todosState } from "../../../store/todosReducer";
 import Todo from "../../App/types";
-import TodoItem from '../todo-item'
+import TodoItem from '../todo-item';
+import { TodosActions } from '../../../store/todosActions';
 
 interface OwnProps {
     id : number
@@ -15,8 +16,8 @@ const mapStateToProps = (state : todosState ,ownProps: OwnProps) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-      delete: (todoDelete: Todo) => dispatch({ type: "DELETE", payload: todoDelete }),
-      completed : (completedTodo : Todo) => dispatch({type: "COMPLETED", payload: completedTodo}),
+      delete: (todoDelete: Todo) => dispatch(TodosActions.deleteTodo(todoDelete)),
+      completed : (completedTodo : Todo) => dispatch(TodosActions.completeTodo(completedTodo)),
       dispatch
     };
 }

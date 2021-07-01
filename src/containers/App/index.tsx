@@ -4,6 +4,7 @@ import TodoList from "../components/Connected/connected-todo-list";
 import TodoInput from '../components/Connected/connected-todo-input';
 import { connect } from "react-redux";
 import { todosState } from "../../store/todosReducer";
+import { TodosActions } from '../../store/todosActions';
 
 interface Props {
     showInput : boolean,
@@ -38,7 +39,7 @@ const mapStateToProps = (state : todosState) => {
 }
 
 const mapDispatchToProps = (dispatch : any) => {
-    return {openInput : () => {dispatch({type : "OPEN_INPUT"})}}
+    return {openInput : () => {dispatch(TodosActions.openInput())}}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
