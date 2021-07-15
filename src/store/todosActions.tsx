@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { Todo } from '../components/pure/App/types';
+import { Todo, TodosActionsTypes } from './types';
 
 export const OPEN_INPUT =  "OPEN_INPUT";
 export const SUBMIT = "SUBMIT";
@@ -7,15 +7,8 @@ export const CLOSE_INPUT =  "CLOSE_INPUT";
 export const DELETE = "DELETE";
 export const COMPLETED = "COMPLETED";
 
-export interface todosActions {
-    openInput: () => AnyAction;
-    submitInput: (todo: Todo) => AnyAction;
-    closeInput: () => AnyAction;
-    deleteTodo: (todo: Todo) => AnyAction;
-    completeTodo: (todo: Todo) => AnyAction;
-}
 
-export const TodosActions : todosActions = {
+export const TodosActions : TodosActionsTypes = {
     openInput : (): AnyAction => ({
         type: OPEN_INPUT
     }),

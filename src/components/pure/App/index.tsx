@@ -3,12 +3,12 @@ import style from "./App.module.css";
 import { ConnectedTodoList as TodoList} from "../../connected/connected-todo-list";
 import { ConnectedTodoInput as TodoInput } from '../../connected/connected-todo-input';
 import { connect } from "react-redux";
-import { todosState } from "../../../store/todosInitialState";
+import { State } from "../../../store/types";
 import { TodosActions } from '../../../store/todosActions';
 import { AppProps } from './types';
 
 const App: React.FC<AppProps> = (props) => {
-
+  console.log(`show input: ${props.showInput}`)
   return (
     <div className={style.container}>
       {!props.showInput && (
@@ -27,10 +27,9 @@ const App: React.FC<AppProps> = (props) => {
 };
 
 
-const mapStateToProps = (state : todosState) => {
-    console.log(state);
+const mapStateToProps = (state : State) => {
     return {
-        showInput : state.showInput
+        showInput : state.input.showInput
     }
 }
 

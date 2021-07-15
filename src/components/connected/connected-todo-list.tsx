@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
-import { todosState } from "../../store/todosInitialState";
+import { State } from "../../store/types";
 import { TodoList } from "../pure/todo-list/todo-list";
 
-const mapStateToProps = (state: todosState) => {
+const mapStateToProps = (state: State) => {
   return {
-    todos: state.todos,
+    todos: state.todos.todos
   };
 };
 

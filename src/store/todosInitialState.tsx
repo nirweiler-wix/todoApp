@@ -1,11 +1,6 @@
-import { Todo } from "../components/pure/App/types";
-
-export interface todosState {
-    todos : Todo[];
-    showInput: boolean;
-  }
+import { TodosState } from './types';
   
-export const initialTodosState = {
-    todos: [],
+export const initialTodosState : TodosState = {
+    todos: [{text: 'Hello', id:1, isDone: false}],
     showInput: false
-  };
+};

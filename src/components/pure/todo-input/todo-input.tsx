@@ -1,5 +1,5 @@
 import React, { BaseSyntheticEvent } from "react";
-import { Todo } from "../App/types";
+import { Todo } from "../../../store/types";
 import Style from "./todo-input.module.css";
 import { InputProps } from "../types";
 

@@ -1,16 +1,16 @@
 import { connect } from "react-redux";
-import { todosState } from "../../store/todosInitialState";
-import { Todo } from "../pure/App/types";
+import { State } from "../../store/types";
+import { Todo } from "../../store/types";
 import TodoItem from "../pure/todo-item/todo-item";
 import { TodosActions } from "../../store/todosActions";
-import { Dispatch } from './types'
+import { Dispatch } from '../../store/types';
 
 interface TodoItemOwnProps {
   id: number;
 }
 
-const mapStateToProps = (state: todosState, ownProps: TodoItemOwnProps) => {
-  let currentTodo: Todo = state.todos.find((todo) => todo.id === ownProps.id)!;
+const mapStateToProps = (state: State, ownProps: TodoItemOwnProps) => {
+  let currentTodo: Todo = state.todos.todos.find((todo : Todo) => todo.id === ownProps.id)!;
 
   return { todoItem: currentTodo };
 };

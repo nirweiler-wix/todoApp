@@ -1,16 +1,16 @@
-import React, { FC } from "react";
+import React from "react";
 import { ConnectedTodoItem as TodoItem } from "../../connected/connected-todo-item";
-import { Todo } from "../App/types";
+import { Todo } from "../../../store/types";
 import Style from "./todo-list.module.css";
 import { TodoListProps } from "../types";
 
 export const TodoList: React.FC<TodoListProps> = (props) => {
-  const completedTodos: Todo[] = props.todos.filter(
-    (todo : Todo) => todo.isDone === true
-  );
-  const uncompletedTodos: Todo[] = props.todos.filter(
-    (todo : Todo) => todo.isDone === false
-  );
+  const {todos} = props;
+
+  const completedTodos: Todo[] = todos ? props.todos.filter(
+    (todo : Todo) => todo.isDone === true) : [];
+  const uncompletedTodos: Todo[] = todos ? props.todos.filter(
+    (todo : Todo) => todo.isDone === false) : []
 
   const isEmptyTodoList: boolean = uncompletedTodos.length === 0;
   const isEmptyCompletedTodos: boolean = completedTodos.length === 0;

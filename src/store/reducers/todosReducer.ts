@@ -1,24 +1,20 @@
 import { AnyAction } from 'redux';
-import { Todo } from '../components/pure/App/types'
-import { OPEN_INPUT, SUBMIT, CLOSE_INPUT, DELETE, COMPLETED } from './todosActions';
-import { todosState, initialTodosState } from './todosInitialState';
+import { Todo } from '../types';
+import { DELETE, COMPLETED, SUBMIT } from '../todosActions';
+import { initialTodosState } from '../todosInitialState';
+import { TodosState } from '../types';
 
 
 export const todosReducer = (
-  state: todosState = initialTodosState,
+  state: TodosState = initialTodosState,
   action: AnyAction
 ) => {
   switch (action.type) {
-    case OPEN_INPUT:
-      return { ...state, showInput: true };
     case SUBMIT:
       return {
         ...state,
         todos: [...state.todos, action.payload],
-        showInput: false,
       };
-    case CLOSE_INPUT:
-      return { ...state, showInput: false };
     case DELETE:
         const updatedTodos : Todo[] = state.todos.filter(todo => todo.id !== action.payload.id)
         return {...state, todos: updatedTodos}

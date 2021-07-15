@@ -1,4 +1,4 @@
-import { Todo } from './App/types';
+import { Todo } from '../../store/types';
 
 export interface TodoListProps {
     todos: Todo[];
