@@ -1,10 +1,10 @@
 import * as React from "react";
 import style from "./App.module.css";
-import TodoList from "../components/Connected/connected-todo-list";
-import TodoInput from '../components/Connected/connected-todo-input';
+import { ConnectedTodoList as TodoList} from "../../connected/connected-todo-list";
+import { ConnectedTodoInput as TodoInput } from '../../connected/connected-todo-input';
 import { connect } from "react-redux";
-import { todosState } from "../../store/todosInitialState";
-import { TodosActions } from '../../store/todosActions';
+import { todosState } from "../../../store/todosInitialState";
+import { TodosActions } from '../../../store/todosActions';
 import { AppProps } from './types';
 
 const App: React.FC<AppProps> = (props) => {

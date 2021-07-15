@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { Todo } from '../containers/App/types';
+import { Todo } from '../components/pure/App/types';
 
 export const OPEN_INPUT =  "OPEN_INPUT";
 export const SUBMIT = "SUBMIT";

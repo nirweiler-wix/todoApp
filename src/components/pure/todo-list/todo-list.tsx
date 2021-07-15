@@ -1,15 +1,15 @@
 import React, { FC } from "react";
-import TodoItem from "../Connected/connected-todo-item";
-import { Todo } from "../../App/types";
+import { ConnectedTodoItem as TodoItem } from "../../connected/connected-todo-item";
+import { Todo } from "../App/types";
 import Style from "./todo-list.module.css";
-import { TodoListProps } from "./types";
+import { TodoListProps } from "../types";
 
-const TodoList: React.FC<TodoListProps> = (props) => {
+export const TodoList: React.FC<TodoListProps> = (props) => {
   const completedTodos: Todo[] = props.todos.filter(
-    (todo) => todo.isDone === true
+    (todo : Todo) => todo.isDone === true
   );
   const uncompletedTodos: Todo[] = props.todos.filter(
-    (todo) => todo.isDone === false
+    (todo : Todo) => todo.isDone === false
   );
 
   const isEmptyTodoList: boolean = uncompletedTodos.length === 0;
@@ -33,5 +33,3 @@ const TodoList: React.FC<TodoListProps> = (props) => {
     </div>
   );
 };
-
-export default TodoList;

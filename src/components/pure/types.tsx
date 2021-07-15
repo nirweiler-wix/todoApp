@@ -1,4 +1,4 @@
-import { Todo } from '../../App/types';
+import { Todo } from './App/types';
 
 export interface TodoListProps {
     todos: Todo[];
@@ -14,3 +14,4 @@ export interface InputProps {
     submit : (newTodo : Todo) => void,
     close : () => void
 }
+

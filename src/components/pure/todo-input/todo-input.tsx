@@ -1,21 +1,23 @@
 import React, { BaseSyntheticEvent } from "react";
-import { Todo } from "../../App/types";
+import { Todo } from "../App/types";
 import Style from "./todo-input.module.css";
-import { InputProps } from "./types";
+import { InputProps } from "../types";
 
-const TodoInput: React.FC<InputProps> = (props) => {
-  const [enteredTodo, setEnteredTodo] = React.useState("");
+export const TodoInput: React.FC<InputProps> = (props) => {
+  const [value, setValue] = React.useState("");
 
   const inputChangedHandler = (event: BaseSyntheticEvent) => {
     event.preventDefault();
-    setEnteredTodo(event.target.value);
+    setValue(event.target.value);
   };
 
   const submitHandler = (event: BaseSyntheticEvent) => {
     event.preventDefault();
-    if (enteredTodo.trim().length !== 0) {
+    const trimedValue = value.trim();
+
+    if (trimedValue.length !== 0) {
       const newTodo: Todo = {
-        text: enteredTodo.trim(),
+        text: trimedValue,
         id: Math.random(),
         isDone: false,
       };
@@ -29,25 +31,17 @@ const TodoInput: React.FC<InputProps> = (props) => {
     <div>
       <div className={Style.header}>
         <h1>Add To-do</h1>
-        <button className={Style.closeButton} onClick={props.close}>
-          X
-        </button>
+        <button className={Style.closeButton} onClick={props.close}>X</button>
       </div>
       <form onSubmit={submitHandler}>
-        <div>
           <label>To-do</label>
           <input
             type="text"
             onChange={inputChangedHandler}
             placeholder="What need to be done?"
           />
-          <button type="submit" className={Style.doneButton}>
-            Done
-          </button>
-        </div>
+          <button type="submit" className={Style.doneButton}> Done </button>
       </form>
     </div>
   );
 };
-
-export default TodoInput;

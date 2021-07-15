@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Style from "./todo-item.module.css";
-import { ItemProps } from './types';
+import { ItemProps } from '../types';
 
 const TodoItem: React.FC<ItemProps> = (props) => {
     const onDeleteHandler = () => {
